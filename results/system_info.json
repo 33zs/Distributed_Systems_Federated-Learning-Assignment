@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-12-15 11:11:07",
+  "python_version": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:09:02) [GCC 11.2.0]",
+  "pytorch_version": "2.9.1+cu128",
+  "numpy_version": "2.2.6",
+  "platform": {
+    "system": "Linux",
+    "release": "6.8.0-88-generic",
+    "version": "#89-Ubuntu SMP PREEMPT_DYNAMIC Sat Oct 11 01:02:46 UTC 2025",
+    "machine": "x86_64",
+    "processor": "x86_64"
+  },
+  "cuda": {
+    "available": true,
+    "version": "12.8",
+    "device_count": 1,
+    "devices": [
+      {
+        "id": 0,
+        "name": "NVIDIA GeForce RTX 4090",
+        "total_memory_gb": 47.37115478515625,
+        "compute_capability": "8.9"
+      }
+    ]
+  }
+}

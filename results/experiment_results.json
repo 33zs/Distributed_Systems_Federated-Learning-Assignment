@@ -1,0 +1,92 @@
+{
+  "centralised": {
+    "final_accuracy": 86.76,
+    "final_loss": 0.36915073692798617,
+    "training_time": 25.70148754119873,
+    "epochs": 15,
+    "history": {
+      "accuracy": [
+        63.63,
+        80.965,
+        83.42833333333333,
+        84.62333333333333,
+        85.69166666666666,
+        86.015,
+        86.44666666666667,
+        86.65166666666667,
+        87.28166666666667,
+        87.51333333333334,
+        87.62,
+        87.87166666666667,
+        88.10333333333334,
+        88.12833333333333,
+        88.335
+      ],
+      "loss": [
+        1.0953546095702609,
+        0.5500994769193358,
+        0.4751789185960414,
+        0.44371314725633393,
+        0.4144666432324102,
+        0.40174433841543683,
+        0.3892459707745051,
+        0.3801207997031131,
+        0.36802776334649423,
+        0.3572720657970946,
+        0.34993258674265976,
+        0.3440945072699401,
+        0.3402008272833743,
+        0.3364719546447366,
+        0.32979043510000583
+      ]
+    }
+  },
+  "fl_iid_5_clients": {
+    "final_accuracy": 0.8643000000000001,
+    "final_loss": 0.3820949047803879,
+    "training_time": 173.2416913509369,
+    "num_clients": 5,
+    "rounds": 20,
+    "convergence_round": 5
+  },
+  "fl_iid_10_clients": {
+    "final_accuracy": 0.8501000000000001,
+    "final_loss": 0.42406490743160247,
+    "training_time": 301.51695132255554,
+    "num_clients": 10,
+    "rounds": 20,
+    "convergence_round": 7
+  },
+  "fl_iid_20_clients": {
+    "final_accuracy": 0.8205,
+    "final_loss": 0.513275009393692,
+    "training_time": 589.8367667198181,
+    "num_clients": 20,
+    "rounds": 20,
+    "convergence_round": 9
+  },
+  "fl_non_iid_5_clients": {
+    "final_accuracy": 0.5732,
+    "final_loss": 1.1859558820724487,
+    "training_time": 173.54969930648804,
+    "num_clients": 5,
+    "rounds": 20,
+    "convergence_round": 10
+  },
+  "fl_non_iid_10_clients": {
+    "final_accuracy": 0.41240000000000004,
+    "final_loss": 2.929214906692505,
+    "training_time": 307.07899594306946,
+    "num_clients": 10,
+    "rounds": 20,
+    "convergence_round": 14
+  },
+  "fl_non_iid_20_clients": {
+    "final_accuracy": 0.3586,
+    "final_loss": 2.2073785066604614,
+    "training_time": 583.5965421199799,
+    "num_clients": 20,
+    "rounds": 20,
+    "convergence_round": 3
+  }
+}

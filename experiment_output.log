@@ -1,0 +1,1711 @@
+
+================================================================================
+                    JC4001 FEDERATED LEARNING EXPERIMENTS
+================================================================================
+Start Time: 2025-12-15 11:11:07
+================================================================================
+[OK] System info saved to: results/system_info.json
+[OK] Configuration saved to: results/config.json
+
+
+################################################################################
+# PART 2: CENTRALISED LEARNING BASELINE
+################################################################################
+============================================================
+CENTRALISED LEARNING BASELINE
+============================================================
+
+Using device: cuda
+GPU Name: NVIDIA GeForce RTX 4090
+GPU Memory: 47.37 GB
+
+Loading Fashion-MNIST dataset...
+  0%|          | 0.00/26.4M [00:00<?, ?B/s]  0%|          | 32.8k/26.4M [00:00<02:25, 182kB/s]  0%|          | 65.5k/26.4M [00:00<02:14, 195kB/s]  0%|          | 131k/26.4M [00:00<01:23, 317kB/s]   1%|          | 229k/26.4M [00:00<00:52, 497kB/s]  1%|▏         | 393k/26.4M [00:00<00:31, 825kB/s]  3%|▎         | 688k/26.4M [00:00<00:17, 1.44MB/s]  4%|▍         | 1.18M/26.4M [00:00<00:10, 2.43MB/s]  7%|▋         | 1.90M/26.4M [00:00<00:06, 3.81MB/s] 13%|█▎        | 3.38M/26.4M [00:01<00:03, 6.41MB/s] 24%|██▍       | 6.29M/26.4M [00:01<00:01, 12.7MB/s] 35%|███▌      | 9.27M/26.4M [00:01<00:00, 17.5MB/s] 44%|████▎     | 11.5M/26.4M [00:01<00:00, 18.9MB/s] 54%|█████▎    | 14.2M/26.4M [00:01<00:00, 19.5MB/s] 69%|██████▉   | 18.3M/26.4M [00:01<00:00, 22.7MB/s] 85%|████████▌ | 22.5M/26.4M [00:01<00:00, 24.7MB/s]100%|██████████| 26.4M/26.4M [00:01<00:00, 14.0MB/s]
+  0%|          | 0.00/29.5k [00:00<?, ?B/s]100%|██████████| 29.5k/29.5k [00:00<00:00, 166kB/s]100%|██████████| 29.5k/29.5k [00:00<00:00, 166kB/s]
+  0%|          | 0.00/4.42M [00:00<?, ?B/s]  1%|          | 32.8k/4.42M [00:00<00:25, 172kB/s]  1%|▏         | 65.5k/4.42M [00:00<00:22, 190kB/s]  3%|▎         | 131k/4.42M [00:00<00:13, 310kB/s]   5%|▌         | 229k/4.42M [00:00<00:08, 498kB/s]  9%|▉         | 393k/4.42M [00:00<00:04, 827kB/s] 16%|█▌        | 688k/4.42M [00:00<00:02, 1.44MB/s] 24%|██▍       | 1.08M/4.42M [00:00<00:01, 2.17MB/s] 41%|████      | 1.80M/4.42M [00:01<00:00, 3.52MB/s] 74%|███████▍  | 3.28M/4.42M [00:01<00:00, 6.75MB/s]100%|██████████| 4.42M/4.42M [00:01<00:00, 3.72MB/s]
+  0%|          | 0.00/5.15k [00:00<?, ?B/s]100%|██████████| 5.15k/5.15k [00:00<00:00, 23.3MB/s]
+Training samples: 60000
+Test samples: 10000
+
+Creating neural network model...
+Model architecture:
+FashionMNISTNet(
+  (fc1): Linear(in_features=784, out_features=128, bias=True)
+  (fc2): Linear(in_features=128, out_features=64, bias=True)
+  (fc3): Linear(in_features=64, out_features=10, bias=True)
+  (relu): ReLU()
+)
+Total parameters: 109,386
+
+Training model for 15 epochs...
+Epoch 1/15 - Train Loss: 1.0954, Train Acc: 63.63% - Test Loss: 0.6426, Test Acc: 78.01%
+Epoch 2/15 - Train Loss: 0.5501, Train Acc: 80.97% - Test Loss: 0.5237, Test Acc: 81.43%
+Epoch 3/15 - Train Loss: 0.4752, Train Acc: 83.43% - Test Loss: 0.4776, Test Acc: 82.88%
+Epoch 4/15 - Train Loss: 0.4437, Train Acc: 84.62% - Test Loss: 0.4498, Test Acc: 84.04%
+Epoch 5/15 - Train Loss: 0.4145, Train Acc: 85.69% - Test Loss: 0.4389, Test Acc: 84.45%
+Epoch 6/15 - Train Loss: 0.4017, Train Acc: 86.02% - Test Loss: 0.4247, Test Acc: 84.92%
+Epoch 7/15 - Train Loss: 0.3892, Train Acc: 86.45% - Test Loss: 0.4338, Test Acc: 84.63%
+Epoch 8/15 - Train Loss: 0.3801, Train Acc: 86.65% - Test Loss: 0.4059, Test Acc: 85.65%
+Epoch 9/15 - Train Loss: 0.3680, Train Acc: 87.28% - Test Loss: 0.3971, Test Acc: 86.02%
+Epoch 10/15 - Train Loss: 0.3573, Train Acc: 87.51% - Test Loss: 0.3976, Test Acc: 85.78%
+Epoch 11/15 - Train Loss: 0.3499, Train Acc: 87.62% - Test Loss: 0.4013, Test Acc: 86.06%
+Epoch 12/15 - Train Loss: 0.3441, Train Acc: 87.87% - Test Loss: 0.3832, Test Acc: 86.46%
+Epoch 13/15 - Train Loss: 0.3402, Train Acc: 88.10% - Test Loss: 0.3797, Test Acc: 86.47%
+Epoch 14/15 - Train Loss: 0.3365, Train Acc: 88.13% - Test Loss: 0.3855, Test Acc: 86.43%
+Epoch 15/15 - Train Loss: 0.3298, Train Acc: 88.33% - Test Loss: 0.3692, Test Acc: 86.76%
+
+============================================================
+RESULTS
+============================================================
+Final Training Accuracy: 88.33%
+Test Accuracy: 86.76%
+Test Loss: 0.3692
+Training Time: 25.70 seconds
+============================================================
+
+============================================================
+SAVING MODEL AND PLOTS
+============================================================
+Creating models directory...
+Saving centralised model (this may take a few seconds)...
+[OK] Centralised model saved to: models/centralised_model.pth
+
+Generating training curves plot...
+Training curves saved to: plots/centralised_training.png
+[OK] Centralised training plot saved to: plots/centralised_training.png
+============================================================
+
+
+################################################################################
+# PART 4A: EXPERIMENT 1 - IMPACT OF NUMBER OF CLIENTS (IID)
+################################################################################
+
+================================================================================
+ Running FL with 5 clients (IID)
+================================================================================
+======================================================================
+FEDERATED LEARNING - IID with 5 clients
+======================================================================
+
+Using device: cuda
+GPU Name: NVIDIA GeForce RTX 4090
+GPU Memory: 47.37 GB
+
+Dataset: Fashion-MNIST
+  - Total classes: 10
+  - Training samples: 60,000
+  - Test samples: 10,000
+  - Image size: 28x28
+
+Partitioning data (iid)...
+
+Client Data Distribution:
+----------------------------------------------------------------------
+Client 0: 12000 samples | Classes: [0:1200, 1:1200, 2:1200, 3:1200, 4:1200, 5:1200, 6:1200, 7:1200, 8:1200, 9:1200]
+Client 1: 12000 samples | Classes: [0:1200, 1:1200, 2:1200, 3:1200, 4:1200, 5:1200, 6:1200, 7:1200, 8:1200, 9:1200]
+Client 2: 12000 samples | Classes: [0:1200, 1:1200, 2:1200, 3:1200, 4:1200, 5:1200, 6:1200, 7:1200, 8:1200, 9:1200]
+Client 3: 12000 samples | Classes: [0:1200, 1:1200, 2:1200, 3:1200, 4:1200, 5:1200, 6:1200, 7:1200, 8:1200, 9:1200]
+Client 4: 12000 samples | Classes: [0:1200, 1:1200, 2:1200, 3:1200, 4:1200, 5:1200, 6:1200, 7:1200, 8:1200, 9:1200]
+----------------------------------------------------------------------
+Total distributed samples: 60,000
+Average samples per client: 12000
+----------------------------------------------------------------------
+
+Initializing server with global model...
+
+Initial - Test Accuracy: 11.59%, Test Loss: 2.3040
+
+Starting 20 communication rounds...
+
+======================================================================
+Round 1/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 1 Results:
+  Test Accuracy: 70.41%
+  Test Loss: 0.8136
+
+======================================================================
+Round 2/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 2 Results:
+  Test Accuracy: 77.34%
+  Test Loss: 0.6307
+
+======================================================================
+Round 3/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 3 Results:
+  Test Accuracy: 80.13%
+  Test Loss: 0.5637
+
+======================================================================
+Round 4/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 4 Results:
+  Test Accuracy: 81.60%
+  Test Loss: 0.5256
+
+======================================================================
+Round 5/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 5 Results:
+  Test Accuracy: 82.73%
+  Test Loss: 0.5000
+
+======================================================================
+Round 6/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 6 Results:
+  Test Accuracy: 83.22%
+  Test Loss: 0.4808
+
+======================================================================
+Round 7/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 7 Results:
+  Test Accuracy: 83.80%
+  Test Loss: 0.4672
+
+======================================================================
+Round 8/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 8 Results:
+  Test Accuracy: 83.98%
+  Test Loss: 0.4556
+
+======================================================================
+Round 9/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 9 Results:
+  Test Accuracy: 84.01%
+  Test Loss: 0.4453
+
+======================================================================
+Round 10/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 10 Results:
+  Test Accuracy: 84.65%
+  Test Loss: 0.4347
+
+======================================================================
+Round 11/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 11 Results:
+  Test Accuracy: 84.52%
+  Test Loss: 0.4299
+
+======================================================================
+Round 12/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 12 Results:
+  Test Accuracy: 85.12%
+  Test Loss: 0.4216
+
+======================================================================
+Round 13/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 13 Results:
+  Test Accuracy: 85.35%
+  Test Loss: 0.4159
+
+======================================================================
+Round 14/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 14 Results:
+  Test Accuracy: 85.61%
+  Test Loss: 0.4087
+
+======================================================================
+Round 15/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 15 Results:
+  Test Accuracy: 85.74%
+  Test Loss: 0.4036
+
+======================================================================
+Round 16/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 16 Results:
+  Test Accuracy: 85.91%
+  Test Loss: 0.3981
+
+======================================================================
+Round 17/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 17 Results:
+  Test Accuracy: 86.09%
+  Test Loss: 0.3931
+
+======================================================================
+Round 18/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 18 Results:
+  Test Accuracy: 86.28%
+  Test Loss: 0.3892
+
+======================================================================
+Round 19/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 19 Results:
+  Test Accuracy: 86.52%
+  Test Loss: 0.3849
+
+======================================================================
+Round 20/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 20 Results:
+  Test Accuracy: 86.43%
+  Test Loss: 0.3821
+
+======================================================================
+FINAL RESULTS
+======================================================================
+Final Test Accuracy: 86.43%
+Final Test Loss: 0.3821
+Total Training Time: 173.24 seconds
+======================================================================
+[OK] FL model saved to: models/fl_5_clients_iid.pth
+
+================================================================================
+ Running FL with 10 clients (IID)
+================================================================================
+======================================================================
+FEDERATED LEARNING - IID with 10 clients
+======================================================================
+
+Using device: cuda
+GPU Name: NVIDIA GeForce RTX 4090
+GPU Memory: 47.37 GB
+
+Dataset: Fashion-MNIST
+  - Total classes: 10
+  - Training samples: 60,000
+  - Test samples: 10,000
+  - Image size: 28x28
+
+Partitioning data (iid)...
+
+Client Data Distribution:
+----------------------------------------------------------------------
+Client 0:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 1:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 2:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 3:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 4:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 5:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 6:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 7:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 8:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+Client 9:  6000 samples | Classes: [0:600, 1:600, 2:600, 3:600, 4:600, 5:600, 6:600, 7:600, 8:600, 9:600]
+----------------------------------------------------------------------
+Total distributed samples: 60,000
+Average samples per client: 6000
+----------------------------------------------------------------------
+
+Initializing server with global model...
+
+Initial - Test Accuracy: 11.80%, Test Loss: 2.3022
+
+Starting 20 communication rounds...
+
+======================================================================
+Round 1/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 1 Results:
+  Test Accuracy: 64.28%
+  Test Loss: 1.2082
+
+======================================================================
+Round 2/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 2 Results:
+  Test Accuracy: 70.31%
+  Test Loss: 0.7816
+
+======================================================================
+Round 3/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 3 Results:
+  Test Accuracy: 74.95%
+  Test Loss: 0.6818
+
+======================================================================
+Round 4/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 4 Results:
+  Test Accuracy: 77.32%
+  Test Loss: 0.6238
+
+======================================================================
+Round 5/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 5 Results:
+  Test Accuracy: 79.04%
+  Test Loss: 0.5836
+
+======================================================================
+Round 6/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 6 Results:
+  Test Accuracy: 80.15%
+  Test Loss: 0.5560
+
+======================================================================
+Round 7/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 7 Results:
+  Test Accuracy: 81.18%
+  Test Loss: 0.5344
+
+======================================================================
+Round 8/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 8 Results:
+  Test Accuracy: 81.89%
+  Test Loss: 0.5188
+
+======================================================================
+Round 9/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 9 Results:
+  Test Accuracy: 82.62%
+  Test Loss: 0.5044
+
+======================================================================
+Round 10/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 10 Results:
+  Test Accuracy: 82.82%
+  Test Loss: 0.4942
+
+======================================================================
+Round 11/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 11 Results:
+  Test Accuracy: 83.19%
+  Test Loss: 0.4868
+
+======================================================================
+Round 12/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 12 Results:
+  Test Accuracy: 83.34%
+  Test Loss: 0.4750
+
+======================================================================
+Round 13/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 13 Results:
+  Test Accuracy: 83.59%
+  Test Loss: 0.4703
+
+======================================================================
+Round 14/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 14 Results:
+  Test Accuracy: 83.88%
+  Test Loss: 0.4591
+
+======================================================================
+Round 15/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 15 Results:
+  Test Accuracy: 84.25%
+  Test Loss: 0.4519
+
+======================================================================
+Round 16/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 16 Results:
+  Test Accuracy: 84.24%
+  Test Loss: 0.4456
+
+======================================================================
+Round 17/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 17 Results:
+  Test Accuracy: 84.53%
+  Test Loss: 0.4394
+
+======================================================================
+Round 18/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 18 Results:
+  Test Accuracy: 84.78%
+  Test Loss: 0.4335
+
+======================================================================
+Round 19/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 19 Results:
+  Test Accuracy: 84.78%
+  Test Loss: 0.4297
+
+======================================================================
+Round 20/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 20 Results:
+  Test Accuracy: 85.01%
+  Test Loss: 0.4241
+
+======================================================================
+FINAL RESULTS
+======================================================================
+Final Test Accuracy: 85.01%
+Final Test Loss: 0.4241
+Total Training Time: 301.52 seconds
+======================================================================
+[OK] FL model saved to: models/fl_10_clients_iid.pth
+
+================================================================================
+ Running FL with 20 clients (IID)
+================================================================================
+======================================================================
+FEDERATED LEARNING - IID with 20 clients
+======================================================================
+
+Using device: cuda
+GPU Name: NVIDIA GeForce RTX 4090
+GPU Memory: 47.37 GB
+
+Dataset: Fashion-MNIST
+  - Total classes: 10
+  - Training samples: 60,000
+  - Test samples: 10,000
+  - Image size: 28x28
+
+Partitioning data (iid)...
+
+Client Data Distribution:
+----------------------------------------------------------------------
+Client 0:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 1:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 2:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 3:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 4:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 5:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 6:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 7:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 8:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 9:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 10:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 11:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 12:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 13:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 14:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 15:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 16:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 17:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 18:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+Client 19:  3000 samples | Classes: [0:300, 1:300, 2:300, 3:300, 4:300, 5:300, 6:300, 7:300, 8:300, 9:300]
+----------------------------------------------------------------------
+Total distributed samples: 60,000
+Average samples per client: 3000
+----------------------------------------------------------------------
+
+Initializing server with global model...
+
+Initial - Test Accuracy: 7.82%, Test Loss: 2.3146
+
+Starting 20 communication rounds...
+
+======================================================================
+Round 1/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 1 Results:
+  Test Accuracy: 57.38%
+  Test Loss: 1.8239
+
+======================================================================
+Round 2/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 2 Results:
+  Test Accuracy: 64.87%
+  Test Loss: 1.1894
+
+======================================================================
+Round 3/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 3 Results:
+  Test Accuracy: 66.90%
+  Test Loss: 0.9074
+
+======================================================================
+Round 4/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 4 Results:
+  Test Accuracy: 69.66%
+  Test Loss: 0.8029
+
+======================================================================
+Round 5/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 5 Results:
+  Test Accuracy: 73.08%
+  Test Loss: 0.7420
+
+======================================================================
+Round 6/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 6 Results:
+  Test Accuracy: 74.63%
+  Test Loss: 0.6990
+
+======================================================================
+Round 7/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 7 Results:
+  Test Accuracy: 76.33%
+  Test Loss: 0.6690
+
+======================================================================
+Round 8/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 8 Results:
+  Test Accuracy: 77.05%
+  Test Loss: 0.6456
+
+======================================================================
+Round 9/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 9 Results:
+  Test Accuracy: 78.03%
+  Test Loss: 0.6182
+
+======================================================================
+Round 10/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 10 Results:
+  Test Accuracy: 78.68%
+  Test Loss: 0.6048
+
+======================================================================
+Round 11/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 11 Results:
+  Test Accuracy: 78.75%
+  Test Loss: 0.5884
+
+======================================================================
+Round 12/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 12 Results:
+  Test Accuracy: 79.63%
+  Test Loss: 0.5785
+
+======================================================================
+Round 13/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 13 Results:
+  Test Accuracy: 79.29%
+  Test Loss: 0.5660
+
+======================================================================
+Round 14/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 14 Results:
+  Test Accuracy: 80.18%
+  Test Loss: 0.5586
+
+======================================================================
+Round 15/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 15 Results:
+  Test Accuracy: 79.79%
+  Test Loss: 0.5479
+
+======================================================================
+Round 16/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 16 Results:
+  Test Accuracy: 81.42%
+  Test Loss: 0.5387
+
+======================================================================
+Round 17/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 17 Results:
+  Test Accuracy: 80.52%
+  Test Loss: 0.5316
+
+======================================================================
+Round 18/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 18 Results:
+  Test Accuracy: 81.74%
+  Test Loss: 0.5247
+
+======================================================================
+Round 19/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 19 Results:
+  Test Accuracy: 81.28%
+  Test Loss: 0.5156
+
+======================================================================
+Round 20/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 20 Results:
+  Test Accuracy: 82.05%
+  Test Loss: 0.5133
+
+======================================================================
+FINAL RESULTS
+======================================================================
+Final Test Accuracy: 82.05%
+Final Test Loss: 0.5133
+Total Training Time: 589.84 seconds
+======================================================================
+[OK] FL model saved to: models/fl_20_clients_iid.pth
+
+Generating experiment 1 plot (client counts comparison)...
+
+Plot saved to: plots/experiment1_client_counts.png
+[OK] Experiment 1 plot saved to: plots/experiment1_client_counts.png
+
+
+################################################################################
+# PART 4B: EXPERIMENT 2 - IID vs NON-IID DATA DISTRIBUTION
+################################################################################
+
+================================================================================
+ Running FL with 5 clients (Non-IID)
+================================================================================
+======================================================================
+FEDERATED LEARNING - NON_IID with 5 clients
+======================================================================
+
+Using device: cuda
+GPU Name: NVIDIA GeForce RTX 4090
+GPU Memory: 47.37 GB
+
+Dataset: Fashion-MNIST
+  - Total classes: 10
+  - Training samples: 60,000
+  - Test samples: 10,000
+  - Image size: 28x28
+
+Partitioning data (non_iid)...
+
+Client Data Distribution:
+----------------------------------------------------------------------
+Client 0: 12000 samples | Classes: [5:6000, 9:6000]
+Client 1: 12000 samples | Classes: [3:6000, 7:6000]
+Client 2: 12000 samples | Classes: [6:6000, 8:6000]
+Client 3: 12000 samples | Classes: [0:6000, 4:6000]
+Client 4: 12000 samples | Classes: [1:6000, 2:6000]
+----------------------------------------------------------------------
+Total distributed samples: 60,000
+Average samples per client: 12000
+----------------------------------------------------------------------
+
+Initializing server with global model...
+
+Initial - Test Accuracy: 9.89%, Test Loss: 2.3007
+
+Starting 20 communication rounds...
+
+======================================================================
+Round 1/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 1 Results:
+  Test Accuracy: 17.24%
+  Test Loss: 2.1555
+
+======================================================================
+Round 2/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 2 Results:
+  Test Accuracy: 25.78%
+  Test Loss: 1.9347
+
+======================================================================
+Round 3/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 3 Results:
+  Test Accuracy: 43.23%
+  Test Loss: 1.6349
+
+======================================================================
+Round 4/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 4 Results:
+  Test Accuracy: 45.40%
+  Test Loss: 1.5017
+
+======================================================================
+Round 5/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 5 Results:
+  Test Accuracy: 48.03%
+  Test Loss: 1.4075
+
+======================================================================
+Round 6/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 6 Results:
+  Test Accuracy: 49.65%
+  Test Loss: 1.3464
+
+======================================================================
+Round 7/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 7 Results:
+  Test Accuracy: 50.52%
+  Test Loss: 1.3016
+
+======================================================================
+Round 8/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 8 Results:
+  Test Accuracy: 53.20%
+  Test Loss: 1.2525
+
+======================================================================
+Round 9/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 9 Results:
+  Test Accuracy: 54.22%
+  Test Loss: 1.2253
+
+======================================================================
+Round 10/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 10 Results:
+  Test Accuracy: 56.12%
+  Test Loss: 1.1945
+
+======================================================================
+Round 11/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 11 Results:
+  Test Accuracy: 56.65%
+  Test Loss: 1.1738
+
+======================================================================
+Round 12/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 12 Results:
+  Test Accuracy: 56.42%
+  Test Loss: 1.1838
+
+======================================================================
+Round 13/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 13 Results:
+  Test Accuracy: 57.22%
+  Test Loss: 1.1533
+
+======================================================================
+Round 14/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 14 Results:
+  Test Accuracy: 55.46%
+  Test Loss: 1.2015
+
+======================================================================
+Round 15/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 15 Results:
+  Test Accuracy: 58.82%
+  Test Loss: 1.1418
+
+======================================================================
+Round 16/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 16 Results:
+  Test Accuracy: 53.70%
+  Test Loss: 1.2354
+
+======================================================================
+Round 17/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 17 Results:
+  Test Accuracy: 55.92%
+  Test Loss: 1.1769
+
+======================================================================
+Round 18/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 18 Results:
+  Test Accuracy: 57.72%
+  Test Loss: 1.1407
+
+======================================================================
+Round 19/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 19 Results:
+  Test Accuracy: 54.31%
+  Test Loss: 1.2113
+
+======================================================================
+Round 20/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 20 Results:
+  Test Accuracy: 57.32%
+  Test Loss: 1.1860
+
+======================================================================
+FINAL RESULTS
+======================================================================
+Final Test Accuracy: 57.32%
+Final Test Loss: 1.1860
+Total Training Time: 173.55 seconds
+======================================================================
+[OK] FL model saved to: models/fl_5_clients_non_iid.pth
+
+================================================================================
+ Running FL with 10 clients (Non-IID)
+================================================================================
+======================================================================
+FEDERATED LEARNING - NON_IID with 10 clients
+======================================================================
+
+Using device: cuda
+GPU Name: NVIDIA GeForce RTX 4090
+GPU Memory: 47.37 GB
+
+Dataset: Fashion-MNIST
+  - Total classes: 10
+  - Training samples: 60,000
+  - Test samples: 10,000
+  - Image size: 28x28
+
+Partitioning data (non_iid)...
+
+Client Data Distribution:
+----------------------------------------------------------------------
+Client 0: 12000 samples | Classes: [3:6000, 5:6000]
+Client 1:  4500 samples | Classes: [2:3000, 8:1500]
+Client 2:  4500 samples | Classes: [4:3000, 8:1500]
+Client 3:  4500 samples | Classes: [7:3000, 8:1500]
+Client 4:  4500 samples | Classes: [0:3000, 1:1500]
+Client 5:  4500 samples | Classes: [0:3000, 1:1500]
+Client 6:  4500 samples | Classes: [2:3000, 8:1500]
+Client 7:  9000 samples | Classes: [6:6000, 7:3000]
+Client 8:  7500 samples | Classes: [1:1500, 9:6000]
+Client 9:  4500 samples | Classes: [1:1500, 4:3000]
+----------------------------------------------------------------------
+Total distributed samples: 60,000
+Average samples per client: 6000
+----------------------------------------------------------------------
+
+Initializing server with global model...
+
+Initial - Test Accuracy: 10.01%, Test Loss: 2.2976
+
+Starting 20 communication rounds...
+
+======================================================================
+Round 1/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 1 Results:
+  Test Accuracy: 19.37%
+  Test Loss: 2.2341
+
+======================================================================
+Round 2/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 2 Results:
+  Test Accuracy: 20.53%
+  Test Loss: 2.2539
+
+======================================================================
+Round 3/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 3 Results:
+  Test Accuracy: 33.00%
+  Test Loss: 2.2246
+
+======================================================================
+Round 4/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 4 Results:
+  Test Accuracy: 29.13%
+  Test Loss: 2.3274
+
+======================================================================
+Round 5/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 5 Results:
+  Test Accuracy: 30.51%
+  Test Loss: 2.3356
+
+======================================================================
+Round 6/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 6 Results:
+  Test Accuracy: 33.09%
+  Test Loss: 2.3544
+
+======================================================================
+Round 7/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 7 Results:
+  Test Accuracy: 32.37%
+  Test Loss: 2.3553
+
+======================================================================
+Round 8/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 8 Results:
+  Test Accuracy: 34.58%
+  Test Loss: 2.4008
+
+======================================================================
+Round 9/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 9 Results:
+  Test Accuracy: 34.13%
+  Test Loss: 2.4248
+
+======================================================================
+Round 10/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 10 Results:
+  Test Accuracy: 36.81%
+  Test Loss: 2.4975
+
+======================================================================
+Round 11/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 11 Results:
+  Test Accuracy: 35.87%
+  Test Loss: 2.5435
+
+======================================================================
+Round 12/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 12 Results:
+  Test Accuracy: 38.53%
+  Test Loss: 2.6227
+
+======================================================================
+Round 13/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 13 Results:
+  Test Accuracy: 36.78%
+  Test Loss: 2.6957
+
+======================================================================
+Round 14/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 14 Results:
+  Test Accuracy: 39.71%
+  Test Loss: 2.7146
+
+======================================================================
+Round 15/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 15 Results:
+  Test Accuracy: 39.08%
+  Test Loss: 2.7418
+
+======================================================================
+Round 16/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 16 Results:
+  Test Accuracy: 41.71%
+  Test Loss: 2.7972
+
+======================================================================
+Round 17/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 17 Results:
+  Test Accuracy: 38.76%
+  Test Loss: 2.8617
+
+======================================================================
+Round 18/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 18 Results:
+  Test Accuracy: 39.67%
+  Test Loss: 2.9039
+
+======================================================================
+Round 19/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 19 Results:
+  Test Accuracy: 39.64%
+  Test Loss: 2.9152
+
+======================================================================
+Round 20/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 20 Results:
+  Test Accuracy: 41.24%
+  Test Loss: 2.9292
+
+======================================================================
+FINAL RESULTS
+======================================================================
+Final Test Accuracy: 41.24%
+Final Test Loss: 2.9292
+Total Training Time: 307.08 seconds
+======================================================================
+[OK] FL model saved to: models/fl_10_clients_non_iid.pth
+
+================================================================================
+ Running FL with 20 clients (Non-IID)
+================================================================================
+======================================================================
+FEDERATED LEARNING - NON_IID with 20 clients
+======================================================================
+
+Using device: cuda
+GPU Name: NVIDIA GeForce RTX 4090
+GPU Memory: 47.37 GB
+
+Dataset: Fashion-MNIST
+  - Total classes: 10
+  - Training samples: 60,000
+  - Test samples: 10,000
+  - Image size: 28x28
+
+Partitioning data (non_iid)...
+
+Client Data Distribution:
+----------------------------------------------------------------------
+Client 0:  2357 samples | Classes: [4:857, 6:1500]
+Client 1:  2357 samples | Classes: [1:857, 6:1500]
+Client 2:  2857 samples | Classes: [1:857, 9:2000]
+Client 3:  2357 samples | Classes: [1:857, 2:1500]
+Client 4:  5000 samples | Classes: [0:3000, 5:2000]
+Client 5:  3000 samples | Classes: [2:1500, 8:1500]
+Client 6:  3000 samples | Classes: [2:1500, 3:1500]
+Client 7:  2357 samples | Classes: [4:857, 8:1500]
+Client 8:  3857 samples | Classes: [1:857, 7:3000]
+Client 9:  2357 samples | Classes: [1:857, 3:1500]
+Client 10:  4500 samples | Classes: [6:1500, 7:3000]
+Client 11:  3500 samples | Classes: [5:2000, 6:1500]
+Client 12:  1714 samples | Classes: [1:857, 4:857]
+Client 13:  3000 samples | Classes: [2:1500, 8:1500]
+Client 14:  2357 samples | Classes: [3:1500, 4:857]
+Client 15:  2358 samples | Classes: [1:858, 8:1500]
+Client 16:  2857 samples | Classes: [4:857, 9:2000]
+Client 17:  2357 samples | Classes: [3:1500, 4:857]
+Client 18:  5000 samples | Classes: [0:3000, 5:2000]
+Client 19:  2858 samples | Classes: [4:858, 9:2000]
+----------------------------------------------------------------------
+Total distributed samples: 60,000
+Average samples per client: 3000
+----------------------------------------------------------------------
+
+Initializing server with global model...
+
+Initial - Test Accuracy: 9.09%, Test Loss: 2.3039
+
+Starting 20 communication rounds...
+
+======================================================================
+Round 1/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 1 Results:
+  Test Accuracy: 10.21%
+  Test Loss: 2.2578
+
+======================================================================
+Round 2/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 2 Results:
+  Test Accuracy: 18.94%
+  Test Loss: 2.1934
+
+======================================================================
+Round 3/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 3 Results:
+  Test Accuracy: 34.69%
+  Test Loss: 2.1308
+
+======================================================================
+Round 4/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 4 Results:
+  Test Accuracy: 35.06%
+  Test Loss: 2.1060
+
+======================================================================
+Round 5/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 5 Results:
+  Test Accuracy: 34.37%
+  Test Loss: 2.0839
+
+======================================================================
+Round 6/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 6 Results:
+  Test Accuracy: 32.72%
+  Test Loss: 2.0615
+
+======================================================================
+Round 7/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 7 Results:
+  Test Accuracy: 31.74%
+  Test Loss: 2.0483
+
+======================================================================
+Round 8/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 8 Results:
+  Test Accuracy: 32.07%
+  Test Loss: 2.0293
+
+======================================================================
+Round 9/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 9 Results:
+  Test Accuracy: 32.07%
+  Test Loss: 2.0222
+
+======================================================================
+Round 10/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 10 Results:
+  Test Accuracy: 32.92%
+  Test Loss: 2.0092
+
+======================================================================
+Round 11/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 11 Results:
+  Test Accuracy: 33.90%
+  Test Loss: 2.0071
+
+======================================================================
+Round 12/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 12 Results:
+  Test Accuracy: 34.44%
+  Test Loss: 2.0109
+
+======================================================================
+Round 13/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 13 Results:
+  Test Accuracy: 34.88%
+  Test Loss: 2.0304
+
+======================================================================
+Round 14/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 14 Results:
+  Test Accuracy: 34.99%
+  Test Loss: 2.0492
+
+======================================================================
+Round 15/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 15 Results:
+  Test Accuracy: 35.38%
+  Test Loss: 2.0756
+
+======================================================================
+Round 16/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 16 Results:
+  Test Accuracy: 35.55%
+  Test Loss: 2.1051
+
+======================================================================
+Round 17/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 17 Results:
+  Test Accuracy: 35.53%
+  Test Loss: 2.1321
+
+======================================================================
+Round 18/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 18 Results:
+  Test Accuracy: 35.85%
+  Test Loss: 2.1581
+
+======================================================================
+Round 19/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+
+Round 19 Results:
+  Test Accuracy: 35.78%
+  Test Loss: 2.1892
+
+======================================================================
+Round 20/20
+======================================================================
+Clients training locally...
+Server aggregating models...
+/home/gyf/XZS/fdhomework/run_experiments.py:607: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+
+Round 20 Results:
+  Test Accuracy: 35.86%
+  Test Loss: 2.2074
+
+======================================================================
+FINAL RESULTS
+======================================================================
+Final Test Accuracy: 35.86%
+Final Test Loss: 2.2074
+Total Training Time: 583.60 seconds
+======================================================================
+[OK] FL model saved to: models/fl_20_clients_non_iid.pth
+
+Generating experiment 2 plot (IID vs Non-IID comparison)...
+
+Plot saved to: plots/experiment2_iid_vs_non_iid.png
+[OK] Experiment 2 plot saved to: plots/experiment2_iid_vs_non_iid.png
+
+Generating convergence speed comparison plot...
+[OK] Convergence comparison plot saved to: plots/experiment3_convergence_comparison.png
+
+
+################################################################################
+# PART 5: COMPREHENSIVE COMPARISON
+################################################################################
+
+Generating comprehensive comparison plots (6 subplots)...
+This may take a few seconds...
+[OK] Comprehensive comparison plot saved to: plots/comprehensive_comparison.png
+
+
+===============================================================================================
+                              RESULTS SUMMARY TABLE
+===============================================================================================
+Method                    Accuracy        Loss         Time (s)     Total Rounds    Converge@95%   
+-----------------------------------------------------------------------------------------------
+Centralised                86.76%         0.3692          25.70         15 epochs        N/A            
+FL (5 clients, IID)        86.43%         0.3821         173.24         20 rounds             5 rounds
+FL (10 clients, IID)       85.01%         0.4241         301.52         20 rounds             7 rounds
+FL (20 clients, IID)       82.05%         0.5133         589.84         20 rounds             9 rounds
+FL (5 clients, Non-IID)    57.32%         1.1860         173.55         20 rounds            10 rounds
+FL (10 clients, Non-IID)   41.24%         2.9292         307.08         20 rounds            14 rounds
+FL (20 clients, Non-IID)   35.86%         2.2074         583.60         20 rounds             3 rounds
+===============================================================================================
+
+Saving experiment results to JSON file...
+[OK] Detailed results saved to: results/experiment_results.json
+
+
+================================================================================
+                              KEY INSIGHTS
+================================================================================
+
+1. Centralised vs FL (IID):
+   - Accuracy gap: 1.75%
+   - FL achieves 98.0% of centralised performance
+
+2. IID vs Non-IID (10 clients):
+   - Accuracy drop with non-IID data: 43.77%
+   - Non-IID achieves 48.5% of IID performance
+
+3. Impact of Client Count (IID):
+   - 5 clients:  86.43%
+   - 10 clients: 85.01%
+   - 20 clients: 82.05%
+   - Change from 5 to 20 clients: -4.38%
+
+4. Impact of Client Count (Non-IID):
+   - 5 clients:  57.32%
+   - 10 clients: 41.24%
+   - 20 clients: 35.86%
+   - Change from 5 to 20 clients: -21.46%
+
+5. Convergence Speed Comparison (Rounds to reach 95% of final accuracy):
+   IID:
+   - 5 clients:  5 rounds
+   - 10 clients:  7 rounds
+   - 20 clients:  9 rounds
+   Non-IID:
+   - 5 clients:  10 rounds
+   - 10 clients:  14 rounds
+   - 20 clients:  3 rounds
+   Impact of Non-IID on convergence (10 clients): +7 rounds
+
+================================================================================
+Experiments completed at: 2025-12-15 11:48:18
+================================================================================
+
+================================================================================
+All experiments completed successfully!
+
+Generated files:
+
+[Models]
+  - models/centralised_model.pth
+  - models/fl_5_clients_iid.pth
+  - models/fl_10_clients_iid.pth
+  - models/fl_20_clients_iid.pth
+  - models/fl_5_clients_non_iid.pth
+  - models/fl_10_clients_non_iid.pth
+  - models/fl_20_clients_non_iid.pth
+
+[Plots]
+  - plots/centralised_training.png
+  - plots/experiment1_client_counts.png
+  - plots/experiment2_iid_vs_non_iid.png
+  - plots/experiment3_convergence_comparison.png
+  - plots/comprehensive_comparison.png
+
+[Results]
+  - results/experiment_results.json
+  - results/system_info.json
+  - results/config.json
+================================================================================

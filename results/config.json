@@ -1,0 +1,82 @@
+{
+  "experiment_name": "JC4001 Federated Learning",
+  "timestamp": "2025-12-15 11:11:08",
+  "random_seed": 42,
+  "dataset": {
+    "name": "Fashion-MNIST",
+    "num_classes": 10,
+    "input_size": 784,
+    "train_samples": 60000,
+    "test_samples": 10000
+  },
+  "model_architecture": {
+    "type": "FashionMNISTNet",
+    "layers": [
+      {
+        "type": "Linear",
+        "input": 784,
+        "output": 128,
+        "activation": "ReLU"
+      },
+      {
+        "type": "Linear",
+        "input": 128,
+        "output": 64,
+        "activation": "ReLU"
+      },
+      {
+        "type": "Linear",
+        "input": 64,
+        "output": 10,
+        "activation": "None"
+      }
+    ],
+    "total_parameters": 109386
+  },
+  "centralised_learning": {
+    "epochs": 15,
+    "batch_size": 1024,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "loss_function": "CrossEntropyLoss"
+  },
+  "federated_learning": {
+    "communication_rounds": 20,
+    "local_epochs": 3,
+    "batch_size": 1024,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "aggregation_method": "FedAvg",
+    "client_participation_rate": 1.0
+  },
+  "experiments": {
+    "part2": {
+      "name": "Centralised Learning Baseline",
+      "description": "Train centralized model on full dataset"
+    },
+    "part4a": {
+      "name": "Experiment 1 - Client Count Impact",
+      "description": "Compare FL performance with different client counts (IID)",
+      "client_counts": [
+        5,
+        10,
+        20
+      ],
+      "data_distribution": "IID"
+    },
+    "part4b": {
+      "name": "Experiment 2 - IID vs Non-IID",
+      "description": "Compare IID and Non-IID data distributions",
+      "client_counts": [
+        5,
+        10,
+        20
+      ],
+      "data_distributions": [
+        "IID",
+        "Non-IID"
+      ],
+      "non_iid_classes_per_client": 2
+    }
+  }
+}
