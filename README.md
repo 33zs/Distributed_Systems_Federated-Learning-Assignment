@@ -1,205 +1,234 @@
 # JC4001 Distributed Systems - Federated Learning Assignment
 
-This project implements a federated learning system for image classification using the Fashion-MNIST dataset, comparing it with centralised learning approaches.
+**Student:** zishanxu (50087477) | **Course:** JC4001 - Distributed Systems | **Institution:** University of Aberdeen
 
-## Project Structure
+This project implements a federated learning (FL) system for Fashion-MNIST image classification, comparing federated and centralised approaches under various configurations (IID/Non-IID data, different client counts).
+
+---
+
+## 📁 Project Structure
 
 ```
 fdhomework/
 ├── README.md                          # This file
-├── report.md                          # Comprehensive project report
-├── centralised_learning.py            # Part 2: Centralised baseline implementation
-├── federated_learning.py             # Part 3: Federated learning implementation
-├── run_experiments.py                # Main script to run all experiments
+├── config.py                          # Centralized configuration (hyperparameters, paths)
+├── model_utils.py                     # Neural network model definition
+├── centralised_learning.py            # Part 2: Centralised baseline
+├── federated_learning.py             # Part 3: Federated learning (FedAvg)
+├── run_experiments.py                # Main entry point - runs all experiments
 ├── requirements.txt                  # Python dependencies
-└── JC4001 Coursework Assignment_2025.pdf  # Assignment specification
+├── models/                           # Saved model checkpoints
+├── plots/                            # Generated visualizations
+└── results/                          # Experiment results (JSON)
 ```
 
-## Requirements
+---
 
+## 🚀 Quick Start
+
+### Installation
+
+**Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
+
+Or manually install:
+```bash
+pip install torch torchvision numpy matplotlib
+```
+
+**Requirements:**
 - Python 3.8+
 - PyTorch 2.x + torchvision
 - NumPy
 - Matplotlib
 
-## Installation
+### Run All Experiments (Recommended)
 
-使用仓库内的依赖文件安装（推荐）：
-
-```bash
-pip install -r requirements.txt
-```
-
-如果需要手动安装，请确保安装了 PyTorch（含 torchvision）、numpy、matplotlib。
-
-## How to Run
-
-### Option 1: Run All Experiments (推荐)
-
-一次性运行所有实验并生成结果与图表：
-
+**Default (auto GPU/CPU):**
 ```bash
 python run_experiments.py
 ```
 
-脚本会：
-1. 跑集中式基线（第 2 部分）
-2. 跑联邦学习 IID 不同客户端数 5/10/20（第 4A 部分）
-3. 跑联邦学习 IID vs Non-IID（第 4B 部分）
-4. 生成对比图与分析（第 5 部分）
-5. 将结果保存为 JSON，并导出可视化
-
-**预计耗时：** 15–30 分钟，取决于是否有 GPU。
-
-### Option 2: 单独运行
-
-**仅集中式训练：**
+**Force CPU mode:**
 ```bash
-python centralised_learning.py
+python run_experiments.py --cpu
 ```
 
-**联邦学习示例：**
+**Specify GPU device (Linux/Mac):**
 ```bash
-python federated_learning.py
+CUDA_VISIBLE_DEVICES=0 python run_experiments.py
 ```
 
-## Generated Outputs
+**Expected runtime:** ~37 minutes with GPU (NVIDIA RTX 4090) | Longer on CPU
 
-After running the experiments, the following files will be generated:
+---
 
-1. **Plots:** (saved in `plots/` folder)
-   - `plots/centralised_training.png` - Centralised learning accuracy/loss curves
-   - `plots/experiment1_client_counts.png` - Comparison of 5, 10, 20 clients (IID)
-   - `plots/experiment2_iid_vs_non_iid.png` - IID vs Non-IID comparison
-   - `plots/comprehensive_comparison.png` - All methods compared
+## 📊 What Gets Run
 
-2. **Models:**
-   - `models/centralised_model.pth` - 集中式模型
-   - `models/fl_5_clients_iid.pth`, `models/fl_10_clients_iid.pth`, `models/fl_20_clients_iid.pth`, `models/fl_10_clients_non_iid.pth` - 各联邦实验的全局模型
+The `run_experiments.py` script executes all assignment parts:
 
-3. **Results:**
-   - `experiment_results.json` - Detailed numerical results from all experiments
+1. **Part 2:** Centralised learning baseline (Fashion-MNIST, 15 epochs)
+2. **Part 4A - Experiment 1:** FL with varying client counts (5, 10, 20 clients, IID data)
+3. **Part 4B - Experiment 2:** FL with IID vs Non-IID data (5, 10, 20 clients each)
+4. **Part 5:** Comprehensive performance comparison
+5. **Outputs:** Models saved, plots generated, results stored as JSON
 
-## Code Structure
+---
 
-### centralised_learning.py
+## 📂 Generated Outputs
 
-Implements Part 2 of the assignment:
-- Loads Fashion-MNIST dataset
-- Creates a 3-layer neural network (784-128-64-10)
-- Trains on the full dataset
-- Evaluates and plots results
+After running, you'll find:
 
-### federated_learning.py
+### 1. Plots (`plots/` folder)
+- `centralised_training.png` - Centralised baseline training curves
+- `experiment1_client_counts.png` - IID client count comparison (5/10/20)
+- `experiment2_iid_vs_non_iid.png` - IID vs Non-IID comparison (10 clients)
+- `experiment3_convergence_comparison.png` - Convergence speed analysis
+- `comprehensive_comparison.png` - All configurations compared (6 subplots)
 
-Implements Part 3 of the assignment:
-- `FederatedClient` class: Simulates individual clients with local data
-- `FederatedServer` class: Manages global model and performs FedAvg aggregation
-- `partition_data_iid()`: Creates IID data partitions
-- `partition_data_non_iid()`: Creates non-IID data partitions (class-based skew)
-- `run_federated_learning()`: Main FL training loop
+### 2. Models (`models/` folder)
+- `centralised_model.pth` - Centralised baseline
+- `fl_5_clients_iid.pth`, `fl_10_clients_iid.pth`, `fl_20_clients_iid.pth` - IID FL models
+- `fl_5_clients_non_iid.pth`, `fl_10_clients_non_iid.pth`, `fl_20_clients_non_iid.pth` - Non-IID FL models
 
-### run_experiments.py
+### 3. Results (`results/` folder)
+- `experiment_results.json` - All metrics (accuracy, loss, time, convergence rounds)
+- `system_info.json` - Hardware/software environment
+- `config.json` - Experiment configuration snapshot
 
-Runs all experiments for Parts 4 and 5:
-- Experiment 1: Varying number of clients (5, 10, 20)
-- Experiment 2: IID vs Non-IID data distribution
-- Generates comprehensive comparisons and visualizations
-- Saves all results
+---
 
-## Model Architecture
+## 🧪 Experimental Configuration
 
-All models use the same architecture for fair comparison:
-
+### Model Architecture (All Experiments)
 ```
-Input Layer:    784 neurons (28×28 flattened images)
-Hidden Layer 1: 128 neurons, ReLU activation
-Hidden Layer 2: 64 neurons, ReLU activation
-Output Layer:   10 neurons, Softmax activation
+Input:    784 neurons (28×28 flattened Fashion-MNIST images)
+Hidden 1: 128 neurons + ReLU
+Hidden 2: 64 neurons + ReLU
+Output:   10 neurons (10 classes)
 
-Optimizer: Adam (learning rate = 0.001)
-Loss: CrossEntropyLoss
+Optimizer: Adam (lr=0.001)
+Loss:      CrossEntropyLoss
 ```
 
-## Federated Learning Configuration
+### Centralised Learning
+- **Epochs:** 15
+- **Batch size:** 1024
+- **Dataset:** Full 60,000 training samples
+- **Result:** 86.76% test accuracy
 
-- **Communication Rounds:** 20
-- **Local Epochs per Round:** 5
-- **Batch Size:** 512
-- **Aggregation Algorithm:** FedAvg (Federated Averaging)
-- **Client Participation:** 100% (all clients participate in each round)
+### Federated Learning
+- **Communication rounds (T):** 20
+- **Local epochs per round (E):** 3
+- **Batch size:** 1024
+- **Aggregation:** FedAvg (weighted by client data size)
+- **Client participation:** 100% (all clients every round)
 
-## Data Distribution Strategies
+### Data Distribution Strategies
 
-### IID (Independent and Identically Distributed)
-- Dataset randomly shuffled
-- Split equally among clients
-- Each client has uniform class distribution
+**IID (Independent and Identically Distributed):**
+- Dataset randomly shuffled and split equally
+- Each client has uniform class distribution (all 10 classes)
+- **Best result:** 86.43% (5 clients) - very close to centralised
 
-### Non-IID (Non-Independent and Identically Distributed)
-- Each client receives data from only 2-3 classes (out of 10)
-- Simulates realistic heterogeneous data scenarios
-- Creates statistical heterogeneity across clients
+**Non-IID (Non-Independent and Identically Distributed):**
+- Each client receives only 2 classes (out of 10)
+- Simulates realistic data heterogeneity (e.g., different hospitals, user preferences)
+- **Challenge:** Severe performance drop (41.24% for 10 clients)
 
-## Assignment Parts Mapping
+---
 
-- **Part 1:** See `report.md` - Federated Learning summary (500 words)
-- **Part 2:** `centralised_learning.py` - Centralised baseline
-- **Part 3:** `federated_learning.py` - FL implementation
-  - Part 3A: Client simulation and data partitioning
-  - Part 3B: Local model training
-  - Part 3C: FedAvg server aggregation
-  - Part 3D: Communication rounds
-- **Part 4:** `run_experiments.py` - Experiments
-  - Part 4A: Impact of number of clients
-  - Part 4B: IID vs Non-IID comparison
-- **Part 5:** `run_experiments.py` - Performance comparison
-- **Report:** `report.md` - Complete project report
+## 📈 Key Results Summary
 
-## Key Results Summary
+| Configuration | Test Accuracy | Test Loss | Training Time |
+|---------------|---------------|-----------|---------------|
+| **Centralised** | **86.76%** | 0.3692 | 25.70s |
+| FL (5 clients, IID) | 86.43% | 0.3821 | 173.24s |
+| FL (10 clients, IID) | 85.01% | 0.4241 | 301.52s |
+| FL (20 clients, IID) | 82.05% | 0.5133 | 589.84s |
+| FL (5 clients, Non-IID) | 57.32% | 1.1860 | 173.55s |
+| FL (10 clients, Non-IID) | **41.24%** | 2.9292 | 307.08s |
+| FL (20 clients, Non-IID) | **35.86%** | 2.2074 | 583.60s |
 
-After running the experiments, you can find:
+**Key insights:**
+- IID FL achieves near-centralised performance (0.33-4.71 pp drop)
+- Non-IID data causes catastrophic degradation (43.77 pp drop for 10 clients)
+- Client count affects performance: more clients = lower accuracy (especially Non-IID)
 
-1. **Final accuracies** for all methods in the console output
-2. **Detailed metrics** in `experiment_results.json`
-3. **Visual comparisons** in the generated PNG files
+---
 
-## Troubleshooting
+## 🔧 Code Structure Details
+
+### `config.py`
+Centralized configuration file containing all hyperparameters:
+- Random seed (42)
+- Model architecture sizes
+- Training parameters (epochs, batch size, learning rate)
+- FL parameters (rounds, local epochs)
+- Directory paths
+
+### `model_utils.py`
+- `FashionMNISTNet` class: 3-layer fully connected network
+- Shared across centralised and federated experiments
+
+### `centralised_learning.py` (Part 2)
+- `load_fashion_mnist()`: Dataset loading
+- `train_centralised_model()`: Standard training loop
+- `plot_training_history()`: Visualize training curves
+- Serves as performance baseline
+
+### `federated_learning.py` (Part 3)
+- `FederatedClient`: Simulates individual clients with local data and training
+- `FederatedServer`: Manages global model, performs FedAvg aggregation
+- `partition_data_iid()`: Creates IID partitions (stratified sampling)
+- `partition_data_non_iid()`: Creates Non-IID partitions (2 classes per client)
+- `run_federated_learning()`: Main FL training loop (20 rounds)
+
+### `run_experiments.py` (Parts 4 & 5)
+- Orchestrates all experiments
+- Runs 7 configurations: 1 centralised + 6 FL (3 IID + 3 Non-IID)
+- Generates all plots and comparison figures
+- Saves results to JSON
+
+---
+
+## 🐛 Troubleshooting
 
 ### Out of Memory Error
-If you encounter memory issues:
-- Reduce batch size in the training functions
-- Reduce number of clients
-- Close other applications
+- **Solution 1:** Force CPU mode: `python run_experiments.py --cpu`
+- **Solution 2:** Reduce batch size in `config.py` (line 18-26)
+- **Solution 3:** Reduce number of clients or rounds
 
 ### Slow Training
-- GPU 加速能显著提升速度
-- 检查 PyTorch 是否识别到 GPU：
-  ```python
-  import torch
-  print("CUDA available:", torch.cuda.is_available())
-  if torch.cuda.is_available():
-      print("GPU count:", torch.cuda.device_count())
-      print("GPU 0:", torch.cuda.get_device_name(0))
-  ```
+Check if GPU is detected:
+```python
+import torch
+print("CUDA available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("GPU:", torch.cuda.get_device_name(0))
+```
+
+If no GPU, expect longer runtime (~2-3 hours on CPU).
 
 ### ImportError
-- 确认依赖已安装：`pip install -r requirements.txt`
-- 检查 Python 版本：`python --version`（应为 3.8+）
+```bash
+pip install --upgrade torch torchvision numpy matplotlib
+python --version  # Should be 3.8+
+```
 
-## References
+### Results Don't Match Report
+- Ensure random seed is 42 (set in `config.py`)
+- Verify configuration hasn't been modified
+- Check all dependencies are correct versions
 
-1. McMahan, H. B., et al. (2017). Communication-efficient learning of deep networks from decentralized data.
-2. Fashion-MNIST dataset: https://github.com/zalandoresearch/fashion-mnist
-3. PyTorch documentation: https://pytorch.org/docs/stable/index.html
+---
 
-## Author
+## 📚 References
 
-**Student Name:** zishanxu
-**Course:** JC4001 - Distributed Systems
-**Institution:** University of Aberdeen
-**Academic Year:** 2025-2026
+1. McMahan, H. B., et al. (2017). Communication-efficient learning of deep networks from decentralized data. *AISTATS*.
+2. Kairouz, P., et al. (2019). Advances and open problems in federated learning. *arXiv:1912.00967*.
+3. Fashion-MNIST dataset: https://github.com/zalandoresearch/fashion-mnist
+4. PyTorch documentation: https://pytorch.org/docs/stable/
 
-## License
-
-This project is submitted as coursework for JC4001 Distributed Systems course.
