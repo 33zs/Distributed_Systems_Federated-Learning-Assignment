@@ -1,4 +1,4 @@
-# JC4001 Distributed Systems - Federated Learning Assignment
+# Distributed Systems - Federated Learning Assignment
 
 This project implements a federated learning (FL) system for Fashion-MNIST image classification, comparing federated and centralised approaches under various configurations (IID/Non-IID data, different client counts).
 
